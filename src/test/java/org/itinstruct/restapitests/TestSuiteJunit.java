@@ -3,11 +3,22 @@ package org.itinstruct.restapitests;
 import io.restassured.RestAssured;
 import io.restassured.http.Header;
 import io.restassured.response.Response;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
 
-public class HeaderTesting {
+public class TestSuiteJunit {
+    @Before
+    public void setUp(){
+        RestAssured.baseURI = "https://reqres.in";
+    }
+    @After
+    public void tearDown(){
+//        for closeup/clean up activity
+        System.out.println("inside after method\n\n");
+    }
     @Test
     public void headerMapTest() {
         HashMap<String, String> hashMap = new HashMap<>();
@@ -15,7 +26,6 @@ public class HeaderTesting {
         hashMap.put("Accept", "application/json");
 
         Response response =  RestAssured.given()
-                .baseUri("https://reqres.in")
                 .headers(hashMap)
                 .get("/api/users/2");
 
@@ -29,7 +39,6 @@ public class HeaderTesting {
         Header header2 = new Header("Accept", "application/json");
 
         Response response =  RestAssured.given()
-                .baseUri("https://reqres.in")
                 .header(header1)
                 .header(header2)
                 .get("/api/users/2");
@@ -41,7 +50,6 @@ public class HeaderTesting {
     @Test
     public void headerTest() {
         Response response =  RestAssured.given()
-                .baseUri("https://reqres.in")
                 .header("Content-Type", "application/json")
                 .header("Accept", "application/json")
                 .get("/api/users/2");

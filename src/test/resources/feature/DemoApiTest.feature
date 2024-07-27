@@ -11,10 +11,13 @@ Feature: Demo API test with cucumber
   Scenario: search product
     Given I have application baseurl
     When I set endpoint url as "/products/search?q=phone"
-    And  I set header value of "Content-Type" as "application/json"
+    And  I set below values in header
+      | headerKey    | headerValue      |
+      | Content-Type | application/json |
+      | Accept       | application/json |
     And  I hit get request
     Then I verify response code as 200
-    And  I should see "category" is "mobile-accessories"
+    And  I should see "products[0].category" is "mobile-accessories"
 
 
 #    Steps should be written by using keywords like Given, When, Then, And, But

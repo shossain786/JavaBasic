@@ -1,5 +1,6 @@
-Feature: Demo API test with cucumber
+Feature: Login test with cucumber
 
+  @defect
   Scenario: get single product
     Given I have application baseurl
     When I set endpoint url as "/product/1"
@@ -8,6 +9,8 @@ Feature: Demo API test with cucumber
     Then I verify response code as 200
     And  I should see "category" is "beauty"
 
+  @draft
+  @sanity
   Scenario: search product
     Given I have application baseurl
     When I set endpoint url as "/products/search?q=phone"

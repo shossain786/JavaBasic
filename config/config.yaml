@@ -1,0 +1,8 @@
+api:
+  baseURL: "https://reqres.com"
+  endpoints:
+    getSingleUser: "/api/users/2"
+    listUsers: "/api/users?page=2"
+  headers:
+    contentType: "application/json"
+    accept: "application/json"
